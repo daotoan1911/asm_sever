@@ -83,7 +83,7 @@ router.post('/update', async function (req, res) {
     let ketqua = await Asm.findOneAndUpdate(filter, update, {
         new: true
     });
-    Student.find({}, function (err, data) {
+    Asm.find({}, function (err, data) {
         // trả về 1 file ejs.
         res.render('index', {pagename: 'Home', message: '',data: data})
     })
