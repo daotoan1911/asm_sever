@@ -88,6 +88,21 @@ router.post('/update', async function (req, res) {
         res.render('index', {pagename: 'Home', message: '',data: data})
     })
 });
+router.post('/delete', async function (req, res) {
+    // lấy tham số ra
+    var content = req.body.content;
+    // in ra log để kiểm tra
+    console.log(content)
+
+// câu lệnh cập nhật
+    const filter = {content: content};
+
+    let xoa = await Asm.deleteOne(filter)
+    Asm.find({}, function (err, data) {
+        // trả về 1 file ejs.
+        res.render('index', {pagename: 'Home', message: '',data: data})
+    })
+});
 
 
 
